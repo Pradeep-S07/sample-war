@@ -4,7 +4,9 @@ node{
    }
    stage('Compile-Package'){
       // Get maven home path
-      def mvnHome = /usr/share/maven tool name: 'maven-3', type: 'maven'   
+      def mvnHome = /usr/share/maven tool name: 'maven-3', type: 'maven' 
+      sh "${mvnHome}/bin/mvn validate"
+      sh "${mvnHome}/bin/mvn compile"
       sh "${mvnHome}/bin/mvn package"
    }
    stage('Email Notification'){
